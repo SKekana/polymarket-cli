@@ -476,6 +476,28 @@ if ! result=$(polymarket -o json clob balance --asset-type collateral 2>/dev/nul
 fi
 ```
 
+## Claude AI Integration
+
+The `.claude/` directory contains a comprehensive Claude skill for AI-assisted CLI usage. This skill provides:
+
+- **Complete command reference** - All 80+ commands with full parameter documentation
+- **Usage examples** - Real-world workflows and scripting patterns
+- **Authentication guide** - Wallet setup and security best practices
+- **Error handling** - Common issues and solutions
+- **Output formats** - Both table and JSON examples
+
+When using Claude Code or other Claude AI tools with this repository, the skill enables natural language interaction:
+
+```
+You: "Find high-volume crypto markets"
+Claude: polymarket markets search "crypto" --order volume --limit 20
+
+You: "How do I check my portfolio value?"
+Claude: polymarket data value $(polymarket wallet address)
+```
+
+See [`.claude/README.md`](.claude/README.md) for full details on using the Claude skill.
+
 ## Architecture
 
 ```
@@ -486,6 +508,9 @@ src/
   shell.rs       -- Interactive REPL
   commands/      -- One module per command group
   output/        -- Table and JSON rendering per command group
+.claude/
+  commands/      -- Claude AI skill definitions
+  README.md      -- Skill usage documentation
 ```
 
 ## License
